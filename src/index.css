@@ -109,5 +109,5 @@ form textarea {
 /* card Style*/
 .card {
   /* @apply border-2 border-teal-600 rounded-lg shadow-xl p-5 text-center my-5 mx-auto; */
-  @apply border-2 border-amber-300 shadow-2xl rounded-lg shadow-xl p-5 my-5 mx-auto;
+  @apply border-2 border-amber-300 shadow-2xl rounded-lg shadow-xl p-5 my-5 mx-auto flex flex-col gap-2;
 }
