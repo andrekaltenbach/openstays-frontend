@@ -1,9 +1,17 @@
+import { Route, Routes } from "react-router-dom";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import PostListPage from "./pages/PostListPage";
 
 function App() {
 
   return (
     <>
-      <h1>Vite + React</h1>
+      <Header />
+      <Routes>
+        <Route path="/" element={<PostListPage />} />
+      </Routes>
+      <Footer />
     </>
   )
 }
