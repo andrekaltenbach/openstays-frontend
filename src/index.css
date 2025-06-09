@@ -87,7 +87,7 @@ form textarea {
 }
 
 .btn-primary {
-  @apply border-lime-800 text-white bg-teal-900  hover:bg-teal-600 hover:border-teal-600;
+  @apply border-lime-800 text-white bg-lime-800  hover:bg-lime-700 hover:border-lime-700;
 }
 
 .btn-primary-fill {
@@ -109,5 +109,5 @@ form textarea {
 /* card Style*/
 .card {
   /* @apply border-2 border-teal-600 rounded-lg shadow-xl p-5 text-center my-5 mx-auto; */
-  @apply border-2 border-amber-300 shadow-2xl rounded-lg shadow-xl p-5 my-5 mx-auto flex flex-col gap-2;
+  @apply border-2 border-lime-800 shadow-2xl rounded-lg shadow-xl p-5 my-5 mx-auto flex flex-col gap-2;
 }

@@ -38,3 +38,10 @@ export type Reviews = {
 export type PostDetailsCardProps = {
   postId?: string;
 };
+
+export type EditPostProps = {
+  post: Post;
+  setPost: (post: Post) => void;
+  setEditStatus: (status: boolean) => void;
+  fetchPost: () => Promise<void>;
+};
