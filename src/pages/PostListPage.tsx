@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type{ Post } from "../types/index"; // Adjust the import path as necessary
 import axios from "axios";
 import { ToiletPaperIcon, WifiHighIcon, WifiSlashIcon, CookingPotIcon, WashingMachineIcon, BathtubIcon } from "@phosphor-icons/react";
-
+import { Link } from "react-router-dom";
 
 export default function PostListPage() {
   const [posts, setPosts] = useState<Post[] | null>(null);
@@ -26,6 +26,7 @@ export default function PostListPage() {
     <div className="container mx-auto p-4">
       { posts ? (
         posts.map((post) => (
+          <Link to={`/posts/${post.id}`} key={post.id}>
           <div key={post.id} className="card">
             <div className="flex flex-col sm:flex-row gap-6">
             <img src={post.imageUrl} alt={post.title} className="w-full sm:w-48 h-48 object-cover mb-2 bg-amber-300" />
@@ -46,11 +47,12 @@ export default function PostListPage() {
               <p className="text-gray-500">{post.hasWashingMachine && <WashingMachineIcon size={24} weight="duotone" />}</p>
               <p className="text-gray-500">{post.hasShower && <BathtubIcon size={24} weight="duotone" />}</p>
             </div>
-            <p className="text-gray-500">Rating: {post.rating} ({post.ratingCount} reviews)</p>
+            <p className="text-gray-500">Rating: {post.rating} / 5 ({post.ratingCount} reviews)</p>
           </div>
           </div>
             <p className="mt-2 text-sm text-gray-400">Posted by {post.userName} on {new Date(post.createdAt).toLocaleDateString()}</p>
           </div>
+          </Link>
         ))
         ) : (
           <p className="text-gray-500">Loading posts...</p>

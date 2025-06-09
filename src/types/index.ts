@@ -34,3 +34,7 @@ export type Reviews = {
   postId: string;
   post: Post;
 };
+
+export type PostDetailsCardProps = {
+  postId?: string;
+};
