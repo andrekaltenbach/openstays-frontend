@@ -6,11 +6,15 @@ export type Post = {
   untilDate: string;
   permanentOffer: boolean;
   maxNumberOfNights: number;
+  maxNumberOfPeople: number;
   hasFacilities: boolean;
   hasWifi: boolean;
   hasKitchen: boolean;
   hasWashingMachine: boolean;
   hasShower: boolean;
+  isTent: boolean;
+  isCaravan: boolean;
+  isBed: boolean;
   text: string;
   rating: number;
   ratingCount: number;
@@ -19,10 +23,10 @@ export type Post = {
   updatedAt: string;
   userName: string;
   userId: string;
-  reviews: Reviews[];
+  reviews: Review[];
 };
 
-export type Reviews = {
+export type Review = {
   id: string;
   createdAt: string;
   updatedAt: string;
@@ -42,6 +46,6 @@ export type PostDetailsCardProps = {
 export type EditPostProps = {
   post: Post;
   setPost: (post: Post) => void;
-  setEditStatus: (status: boolean) => void;
+  setFormStatus: (status: boolean) => void;
   fetchPost: () => Promise<void>;
 };

@@ -1,24 +1,27 @@
 import axios from 'axios';
-import type { Post, PostDetailsCardProps } from '../types';
+import type { Post, PostDetailsCardProps, Review } from '../types';
 import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import EditPost from './EditPost'; // Adjust the import path as necessary
 import {
   ToiletPaperIcon,
   WifiHighIcon,
-  WifiSlashIcon,
   CookingPotIcon,
   WashingMachineIcon,
   BathtubIcon,
   PencilSimpleLineIcon,
   TrashIcon,
+  TentIcon,
+  VanIcon,
+  BedIcon,
 } from '@phosphor-icons/react';
 
 const API_URL = import.meta.env.VITE_SERVER_URL || 'http://localhost:3000'; // Adjust the server URL as necessary
 
 export default function PostDetailsCard({ postId }: PostDetailsCardProps) {
   const [post, setPost] = useState<Post | null>(null);
-  const [editStatus, setEditStatus] = useState<boolean>(false);
+  const [reviews, setReviews] = useState<Review[] | null>(null);
+  const [formStatus, setFormStatus] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const fetchPost = async () => {
@@ -40,6 +43,23 @@ export default function PostDetailsCard({ postId }: PostDetailsCardProps) {
   const deletePost = async () => {
     if (postId) {
       try {
+        const response = await axios.get(`${API_URL}/api/reviews/${postId}`);
+        setReviews(response.data);
+        console.log('Reviews data:', response.data);
+      } catch (error) {
+        console.error('Error getting reviews:', error);
+      }
+      try {
+        if (Array.isArray(reviews)) {
+          for (const review of reviews) {
+            await axios.delete(`${API_URL}/api/reviews/${review.id}`);
+          }
+          console.log('Reviews deleted successfully');
+        }
+      } catch (error) {
+        console.error('Error deleting reviews:', error);
+      }
+      try {
         await axios.delete(`${API_URL}/api/posts/${postId}`);
         console.log('Post deleted successfully');
         setPost(null);
@@ -53,17 +73,17 @@ export default function PostDetailsCard({ postId }: PostDetailsCardProps) {
   if (!postId) {
     return <p className="text-gray-500">Loading ...</p>;
   }
-  console.log('editStatus', editStatus);
+  console.log('editStatus', formStatus);
   return (
     <div>
       {!post ? (
         <p className="text-gray-500">Loading post details...</p>
-      ) : editStatus ? (
+      ) : formStatus ? (
         <EditPost
           post={post}
           setPost={setPost}
           fetchPost={fetchPost}
-          setEditStatus={setEditStatus}
+          setFormStatus={setFormStatus}
         />
       ) : (
         <>
@@ -84,21 +104,19 @@ export default function PostDetailsCard({ postId }: PostDetailsCardProps) {
                   post.fromDate &&
                   post.untilDate && (
                     <p className="text-gray-600">
-                      From: {post.fromDate} Until: {post.untilDate}
+                      Offer valid <br /> from: {new Date(post.fromDate).toLocaleDateString()} <br />{' '}
+                      until: {new Date(post.untilDate).toLocaleDateString()}
                     </p>
                   )
                 )}
                 <p className="text-gray-600">Max Nights: {post.maxNumberOfNights}</p>
+                <p className="text-gray-600">Max Guests: {post.maxNumberOfPeople}</p>
                 <div className="flex flex-wrap gap-2">
                   <p className="text-gray-600">
                     {post.hasFacilities && <ToiletPaperIcon size={24} weight="duotone" />}
                   </p>
                   <p className="text-gray-600">
-                    {post.hasWifi ? (
-                      <WifiHighIcon size={24} weight="light" />
-                    ) : (
-                      <WifiSlashIcon size={24} weight="light" />
-                    )}
+                    {post.hasWifi && <WifiHighIcon size={24} weight="light" />}
                   </p>
                   <p className="text-gray-600">
                     {post.hasKitchen && <CookingPotIcon size={24} weight="duotone" />}
@@ -108,6 +126,15 @@ export default function PostDetailsCard({ postId }: PostDetailsCardProps) {
                   </p>
                   <p className="text-gray-600">
                     {post.hasShower && <BathtubIcon size={24} weight="duotone" />}
+                  </p>
+                  <p className="text-gray-600">
+                    {post.isTent && <TentIcon size={24} weight="duotone" />}
+                  </p>
+                  <p className="text-gray-600">
+                    {post.isCaravan && <VanIcon size={24} weight="duotone" />}
+                  </p>
+                  <p className="text-gray-600">
+                    {post.isBed && <BedIcon size={24} weight="duotone" />}
                   </p>
                 </div>
                 <p className="text-gray-600">
@@ -131,7 +158,7 @@ export default function PostDetailsCard({ postId }: PostDetailsCardProps) {
               </Link>
 
               <div className="flex justify-end gap-4 mt-4">
-                <button onClick={() => setEditStatus(true)}>
+                <button onClick={() => setFormStatus(true)}>
                   <PencilSimpleLineIcon size={24} weight="duotone" className="text-gray-500" />
                 </button>
                 <button
