@@ -262,10 +262,19 @@ export default function EditPost({ post, setPost, fetchPost, setFormStatus }: Ed
             onChange={(e) => setPost({ ...post, userName: e.target.value })}
           />
         </div>
-
-        <button type="submit" className="btn btn-secondary ml-5">
-          Save Changes
-        </button>
+        <div className="text-center flex flex-col gap-5 sm:flex-row mt-8">
+          <button type="submit" className="btn btn-primary-fill">
+            Save Changes
+          </button>
+          <button
+            onClick={() => {
+              setFormStatus(false);
+            }}
+            className="btn btn-secondary sm:ml-5"
+          >
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );
