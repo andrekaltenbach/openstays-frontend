@@ -5,6 +5,7 @@ type PostFormProps = {
   setPost: (post: Post) => void;
   setFormStatus: (status: boolean) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  mode: 'create' | 'edit';
 };
 
 export default function PostForm({ post, setPost, setFormStatus, handleSubmit }: PostFormProps) {
@@ -43,7 +44,6 @@ export default function PostForm({ post, setPost, setFormStatus, handleSubmit }:
             id="fromDate"
             value={post.fromDate ? post.fromDate.slice(0, 10) : ''}
             onChange={(e) => setPost({ ...post, fromDate: e.target.value })}
-            required={true}
           />
         </div>
         <div className="form-control">
@@ -55,7 +55,6 @@ export default function PostForm({ post, setPost, setFormStatus, handleSubmit }:
             id="untilDate"
             value={post.untilDate ? post.untilDate.slice(0, 10) : ''}
             onChange={(e) => setPost({ ...post, untilDate: e.target.value })}
-            required={true}
           />
         </div>
         <div className="form-control">

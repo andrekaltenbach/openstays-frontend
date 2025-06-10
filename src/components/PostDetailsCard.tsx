@@ -90,9 +90,9 @@ export default function PostDetailsCard({ postId }: PostDetailsCardProps) {
           <div className="card mx-auto p-4">
             <div className="flex flex-col gap-6">
               <img
-                src={post.imageUrl}
+                src={post.imageUrl ? post.imageUrl : '../public/image-na.jpg'}
                 alt={post.title}
-                className="w-full h-48 object-cover mb-2 bg-amber-300"
+                className="w-full h-74 object-cover mb-2 bg-amber-300"
               />
               <div className="flex flex-col gap-2">
                 <h2 className="text-xl font-semibold">{post.title}</h2>

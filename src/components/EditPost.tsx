@@ -38,6 +38,7 @@ export default function EditPost({ post, setPost, fetchPost, setFormStatus }: Po
       setPost={setPost}
       setFormStatus={setFormStatus}
       handleSubmit={handleSubmit}
+      mode="edit"
     />
   );
 }
