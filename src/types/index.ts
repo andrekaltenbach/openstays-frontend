@@ -43,7 +43,7 @@ export type PostDetailsCardProps = {
   postId?: string;
 };
 
-export type EditPostProps = {
+export type PostProps = {
   post: Post;
   setPost: (post: Post) => void;
   setFormStatus: (status: boolean) => void;

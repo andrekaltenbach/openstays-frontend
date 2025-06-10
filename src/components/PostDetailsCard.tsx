@@ -159,14 +159,18 @@ export default function PostDetailsCard({ postId }: PostDetailsCardProps) {
 
               <div className="flex justify-end gap-4 mt-4">
                 <button onClick={() => setFormStatus(true)}>
-                  <PencilSimpleLineIcon size={24} weight="duotone" className="text-gray-500" />
+                  <PencilSimpleLineIcon
+                    size={24}
+                    weight="duotone"
+                    className="text-gray-500 cursor-pointer"
+                  />
                 </button>
                 <button
                   onClick={() => {
                     deletePost();
                   }}
                 >
-                  <TrashIcon size={24} weight="duotone" className="text-gray-500" />
+                  <TrashIcon size={24} weight="duotone" className="text-gray-500 cursor-pointer" />
                 </button>
               </div>
             </div>
