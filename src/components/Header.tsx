@@ -6,7 +6,7 @@ export default function Header() {
       <NavLink to="/" className="flex items-center">
         <div className="flex items-center">
           <img src="/icon.png" alt="OpenStay Logo" className="w-10 h-10 mr-2" />
-          <h1 className="title">OpenStay</h1>
+          <h1 className="title">OpenStays</h1>
         </div>
       </NavLink>
       <nav className="flex gap-4">
