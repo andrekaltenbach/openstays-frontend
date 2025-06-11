@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import PostForm from './PostForm';
 import type { Post } from '../types/index';
-const API_URL = import.meta.env.VITE_SERVER_URL || 'http://localhost:3000';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 export default function CreatePostCard({ fetchPosts }: { fetchPosts: () => void }) {
   const [formStatus, setFormStatus] = useState<boolean>(false);

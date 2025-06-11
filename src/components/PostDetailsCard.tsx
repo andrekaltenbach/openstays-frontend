@@ -17,7 +17,7 @@ import {
 } from '@phosphor-icons/react';
 import ReviewsCard from './ReviewsCard';
 
-const API_URL = import.meta.env.VITE_SERVER_URL || 'http://localhost:3000'; // Adjust the server URL as necessary
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'; // Adjust the server URL as necessary
 
 export default function PostDetailsCard({ postId }: PostDetailsCardProps) {
   const [post, setPost] = useState<Post | null>(null);

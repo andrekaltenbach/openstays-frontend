@@ -2,7 +2,7 @@ import axios from 'axios';
 import type { PostProps } from '../types/index'; // Adjust the import path as necessary
 import PostForm from './PostForm';
 
-const API_URL = import.meta.env.VITE_SERVER_URL || 'http://localhost:3000'; // Adjust the server URL as necessary
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'; // Adjust the server URL as necessary
 
 export default function EditPost({ post, setPost, fetchPost, setFormStatus }: PostProps) {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
