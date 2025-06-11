@@ -27,15 +27,6 @@ export default function PostListPage() {
 
   useEffect(() => {
     fetchPosts();
-
-    // axios
-    //   .get<Post[]>(`${API_URL}/api/posts`)
-    //   .then((response) => {
-    //     setPosts(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error fetching posts:', error);
-    //   });
   }, []);
 
   if (!posts) {

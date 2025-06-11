@@ -15,6 +15,7 @@ import {
   VanIcon,
   BedIcon,
 } from '@phosphor-icons/react';
+import ReviewsCard from './ReviewsCard';
 
 const API_URL = import.meta.env.VITE_SERVER_URL || 'http://localhost:3000'; // Adjust the server URL as necessary
 
@@ -38,21 +39,26 @@ export default function PostDetailsCard({ postId }: PostDetailsCardProps) {
 
   useEffect(() => {
     fetchPost();
-  }, [postId]);
+  }, [postId, reviews]);
 
   const deletePost = async () => {
     if (postId) {
+      let reviewsArr: Review[] = [];
+
       try {
-        const response = await axios.get(`${API_URL}/api/reviews/${postId}`);
-        setReviews(response.data);
+        const response = await axios.get(`${API_URL}/api/posts/${postId}/reviews`);
+        reviewsArr = response.data;
+        setReviews(reviewsArr);
         console.log('Reviews data:', response.data);
       } catch (error) {
         console.error('Error getting reviews:', error);
       }
       try {
-        if (Array.isArray(reviews)) {
-          for (const review of reviews) {
-            await axios.delete(`${API_URL}/api/reviews/${review.id}`);
+        console.log('try Deleting reviews for postId:', postId);
+        if (Array.isArray(reviewsArr)) {
+          console.log(reviewsArr);
+          for (const review of reviewsArr) {
+            await axios.delete(`${API_URL}/api/posts/${postId}/reviews/${review.id}`);
           }
           console.log('Reviews deleted successfully');
         }
@@ -173,6 +179,29 @@ export default function PostDetailsCard({ postId }: PostDetailsCardProps) {
                   <TrashIcon size={24} weight="duotone" className="text-gray-500 cursor-pointer" />
                 </button>
               </div>
+            </div>
+            <div className="mt-8">
+              <ReviewsCard post={post} />
+              {/* <div className="flex justify-between items-center">
+                <h2 className="text-2xl font-semibold my-4">Reviews</h2>
+                <button onClick={() => setReviewStatus(true)}>
+                  <PlusIcon size={32} className="cursor-pointer" />
+                </button>
+              </div>
+              {post && post.reviews && post.reviews.length > 0 ? (
+                post.reviews.map((review) => (
+                  <div key={review.id} className="card mx-auto p-4 mb-4">
+                    <p className="text-gray-600">{review.text}</p>
+                    <p className="text-gray-500">Rating: {review.rating} / 5</p>
+                    <p className="mt-2 text-sm text-gray-400">
+                      Review by {review.userName} on{' '}
+                      {new Date(review.createdAt).toLocaleDateString()}
+                    </p>
+                  </div>
+                ))
+              ) : (
+                <p className="text-gray-500">No reviews available.</p>
+              )} */}
             </div>
           </div>
         </>

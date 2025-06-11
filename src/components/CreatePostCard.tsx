@@ -91,11 +91,9 @@ export default function CreatePostCard({ fetchPosts }: { fetchPosts: () => void 
         />
       ) : (
         <>
-          <h2 className="text-2xl font-semibold mb-4">Create New Post</h2>
-          <p className="text-gray-600">This feature is coming soon!</p>
-          {/* Placeholder for future form implementation */}
+          <h2 className="text-2xl font-semibold text-center">Add a new post</h2>
           <button onClick={() => setFormStatus(true)} className="btn btn-primary mt-4">
-            Coming Soon
+            Add New Post
           </button>
         </>
       )}

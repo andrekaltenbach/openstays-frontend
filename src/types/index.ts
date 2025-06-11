@@ -49,3 +49,13 @@ export type PostProps = {
   setFormStatus: (status: boolean) => void;
   fetchPost: () => Promise<void>;
 };
+
+export type ReviewsCardProps = {
+  post: Post;
+};
+
+export type CreateReviewProps = {
+  postId: string;
+  setReviewStatus: (status: boolean) => void;
+  fetchReviews: () => void;
+};
