@@ -14,7 +14,7 @@ import CreatePostCard from '../components/CreatePostCard';
 
 export default function PostListPage() {
   const [posts, setPosts] = useState<Post[] | null>(null);
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'; // Adjust the server URL as necessary
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
   const fetchPosts = async () => {
     try {
@@ -45,9 +45,9 @@ export default function PostListPage() {
               <div key={post.id} className="card">
                 <div className="flex flex-col sm:flex-row gap-6">
                   <img
-                    src={post.imageUrl ? post.imageUrl : '../public/image-na.jpg'}
+                    src={post.imageUrl ? post.imageUrl : '/image-na.jpg'}
                     alt={post.title}
-                    className="w-full sm:w-48 h-48 object-cover mb-2 bg-amber-300"
+                    className="w-full sm:w-48 md:w-80 h-48 object-cover mb-2"
                   />
                   <div className="flex flex-col gap-2">
                     <h2 className="text-xl font-semibold">{post.title}</h2>
