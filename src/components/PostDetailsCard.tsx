@@ -16,6 +16,7 @@ import {
   BedIcon,
 } from '@phosphor-icons/react';
 import ReviewsCard from './ReviewsCard';
+import { toast } from 'react-toastify';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
@@ -33,6 +34,7 @@ export default function PostDetailsCard({ postId }: PostDetailsCardProps) {
         setPost(post.data);
       } catch (error) {
         console.error('Error fetching post:', error);
+        toast.error('Error fetching post');
       }
     }
   };
@@ -49,9 +51,10 @@ export default function PostDetailsCard({ postId }: PostDetailsCardProps) {
         const response = await axios.get(`${API_URL}/api/posts/${postId}/reviews`);
         reviewsArr = response.data;
         setReviews(reviewsArr);
-        console.log('Reviews data:', response.data);
+        console.log('get Reviews data:', response.data);
       } catch (error) {
         console.error('Error getting reviews:', error);
+        toast.error('Error getting reviews data');
       }
       try {
         console.log('try Deleting reviews for postId:', postId);
@@ -68,10 +71,13 @@ export default function PostDetailsCard({ postId }: PostDetailsCardProps) {
       try {
         await axios.delete(`${API_URL}/api/posts/${postId}`);
         console.log('Post deleted successfully');
+        toast.success('Post deleted successfully');
+
         setPost(null);
         navigate('/');
       } catch (error) {
         console.error('Error deleting post:', error);
+        toast.error('Error deleting post');
       }
     }
   };

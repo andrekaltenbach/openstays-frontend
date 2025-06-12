@@ -1,6 +1,7 @@
 import type { CreateReviewProps } from '../types';
 import { useState } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
@@ -33,6 +34,8 @@ export default function CreateReview({
       const response = await axios.post(`${API_URL}/api/posts/${postId}/reviews`, review);
       console.log('Review created successfully:', response.data);
       fetchReviews();
+      toast.success('Review created');
+
       setReviewStatus(false);
       setReview({
         title: '',
@@ -43,6 +46,7 @@ export default function CreateReview({
       });
     } catch (error) {
       console.error('Error creating review:', error);
+      toast.error('Error creating review');
     }
     try {
       const response = await axios.get(`${API_URL}/api/posts/${postId}`);

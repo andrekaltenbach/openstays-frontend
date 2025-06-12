@@ -50,6 +50,14 @@ export type PostProps = {
   fetchPost: () => Promise<void>;
 };
 
+export type PostFormProps = {
+  post: Post;
+  setPost: (post: Post) => void;
+  setFormStatus: (status: boolean) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  mode: 'create' | 'edit';
+};
+
 export type ReviewsCardProps = {
   post: Post;
   fetchPost: () => void;

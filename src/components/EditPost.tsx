@@ -1,6 +1,7 @@
 import axios from 'axios';
 import type { PostProps } from '../types/index';
 import PostForm from './PostForm';
+import { toast } from 'react-toastify';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 export default function EditPost({ post, setPost, fetchPost, setFormStatus }: PostProps) {
@@ -14,14 +15,13 @@ export default function EditPost({ post, setPost, fetchPost, setFormStatus }: Po
       console.log('Sending to backend:', editableFields);
       const response = await axios.put(`${API_URL}/api/posts/${post.id}`, editableFields);
       console.log('Post updated successfully:', response.data);
+      toast.success('Post updated successfully');
+
       fetchPost();
       setFormStatus(false);
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.error('Error updating post:', error.response?.data || error.message);
-      } else {
-        console.error('Error updating post:', error);
-      }
+      console.error('Error updating post:', error);
+      toast.error('Error updating post');
     }
   };
   if (!post) {

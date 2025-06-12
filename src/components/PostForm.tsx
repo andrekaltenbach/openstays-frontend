@@ -1,12 +1,4 @@
-import type { Post } from '../types';
-
-type PostFormProps = {
-  post: Post;
-  setPost: (post: Post) => void;
-  setFormStatus: (status: boolean) => void;
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  mode: 'create' | 'edit';
-};
+import type { PostFormProps } from '../types';
 
 export default function PostForm({ post, setPost, setFormStatus, handleSubmit }: PostFormProps) {
   return (

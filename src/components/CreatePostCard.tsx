@@ -2,6 +2,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import PostForm from './PostForm';
 import type { Post } from '../types/index';
+import { toast } from 'react-toastify';
+
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 export default function CreatePostCard({ fetchPosts }: { fetchPosts: () => void }) {
@@ -45,6 +47,8 @@ export default function CreatePostCard({ fetchPosts }: { fetchPosts: () => void 
 
     try {
       await axios.post(`${API_URL}/api/posts`, newPostData);
+      toast.success('Adding post successful');
+
       setFormStatus(false);
       fetchPosts();
       setPost({
@@ -76,6 +80,7 @@ export default function CreatePostCard({ fetchPosts }: { fetchPosts: () => void 
       });
     } catch (error) {
       console.error('Error creating post:', error);
+      toast.error('Error creating post');
     }
   };
 
