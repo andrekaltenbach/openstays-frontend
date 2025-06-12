@@ -1,54 +1,36 @@
-# React + TypeScript + Vite
+# OpenStays
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Description
 
-Currently, two official plugins are available:
+This repository contains the React frontend for the booster project of the Ironhack Web Development Bootcamp.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+OpenStays is a community-based platform where people can offer free accommodations — from tent spots to guest rooms — helping travelers avoid costly hotels and connect more deeply with nature and local communities.
 
-## Expanding the ESLint configuration
+Frontend Tech-Stack:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- TypeScript
+- React
+- Axios
+- Tailwind CSS
+- Vite
+- Phosphoricons
+- git
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+The backend repository can be found here: [OpenStays-backend](https://github.com/andrekaltenbach/openstays-backend)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Instructions to run this app in my computer
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- fork the repository
+- clone the repository (git clone)
+- navigate to directory of the clone
+- install dependencies: `npm install`
+- setup environment variables in .env:
+  - create a file `.env` in the root directory
+  - `VITE_API_URL = 'http://localhost:5005'`
+- run the app: `npm run dev -- --port 3000`
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### Demo
+
+This app was deployed using Netlify. The backend was deployed using Supabase and render.com.
+
+You can find the deployed version here: [OpenStays-app](https://openstays-app.netlify.app/)
