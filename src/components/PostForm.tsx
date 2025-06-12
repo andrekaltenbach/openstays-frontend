@@ -25,7 +25,7 @@ export default function PostForm({ post, setPost, setFormStatus, handleSubmit }:
           />
         </div>
         <div className="form-control">
-          <label className="text-gray-700 mb-2" htmlFor="location">
+          <label className="text-gray-700" htmlFor="location">
             Location
           </label>
           <input
@@ -36,7 +36,7 @@ export default function PostForm({ post, setPost, setFormStatus, handleSubmit }:
           />
         </div>
         <div className="form-control">
-          <label className="text-gray-700 mb-2" htmlFor="fromDate">
+          <label className="text-gray-700" htmlFor="fromDate">
             From Date
           </label>
           <input
@@ -47,7 +47,7 @@ export default function PostForm({ post, setPost, setFormStatus, handleSubmit }:
           />
         </div>
         <div className="form-control">
-          <label className="text-gray-700 mb-2" htmlFor="untilDate">
+          <label className="text-gray-700" htmlFor="untilDate">
             Until Date
           </label>
           <input
@@ -58,7 +58,7 @@ export default function PostForm({ post, setPost, setFormStatus, handleSubmit }:
           />
         </div>
         <div className="form-control">
-          <label className="text-gray-700 mb-2" htmlFor="permanentOffer">
+          <label className="text-gray-700" htmlFor="permanentOffer">
             Permanent Offer
           </label>
           <select
@@ -72,7 +72,7 @@ export default function PostForm({ post, setPost, setFormStatus, handleSubmit }:
           </select>
         </div>
         <div className="form-control">
-          <label className="text-gray-700 mb-2" htmlFor="maxNumberOfNights">
+          <label className="text-gray-700" htmlFor="maxNumberOfNights">
             Max Number of Nights
           </label>
           <input
@@ -83,7 +83,7 @@ export default function PostForm({ post, setPost, setFormStatus, handleSubmit }:
           />
         </div>
         <div className="form-control">
-          <label className="text-gray-700 mb-2" htmlFor="maxNumberOfPeople">
+          <label className="text-gray-700" htmlFor="maxNumberOfPeople">
             Max Number of People
           </label>
           <input
@@ -94,7 +94,7 @@ export default function PostForm({ post, setPost, setFormStatus, handleSubmit }:
           />
         </div>
         <div className="form-control">
-          <label className="text-gray-700 mb-2" htmlFor="hasFacilities">
+          <label className="text-gray-700" htmlFor="hasFacilities">
             Has Facilities
           </label>
           <select
@@ -108,7 +108,7 @@ export default function PostForm({ post, setPost, setFormStatus, handleSubmit }:
           </select>
         </div>
         <div className="form-control">
-          <label className="text-gray-700 mb-2" htmlFor="hasWifi">
+          <label className="text-gray-700" htmlFor="hasWifi">
             Has Wifi
           </label>
           <select
@@ -122,7 +122,7 @@ export default function PostForm({ post, setPost, setFormStatus, handleSubmit }:
           </select>
         </div>
         <div className="form-control">
-          <label className="text-gray-700 mb-2" htmlFor="hasKitchen">
+          <label className="text-gray-700" htmlFor="hasKitchen">
             Has Kitchen
           </label>
           <select
@@ -136,7 +136,7 @@ export default function PostForm({ post, setPost, setFormStatus, handleSubmit }:
           </select>
         </div>
         <div className="form-control">
-          <label className="text-gray-700 mb-2" htmlFor="hasWashingMachine">
+          <label className="text-gray-700" htmlFor="hasWashingMachine">
             Has Washing Machine
           </label>
           <select
@@ -150,7 +150,7 @@ export default function PostForm({ post, setPost, setFormStatus, handleSubmit }:
           </select>
         </div>
         <div className="form-control">
-          <label className="text-gray-700 mb-2" htmlFor="hasShower">
+          <label className="text-gray-700" htmlFor="hasShower">
             Has Shower
           </label>
           <select
@@ -164,7 +164,7 @@ export default function PostForm({ post, setPost, setFormStatus, handleSubmit }:
           </select>
         </div>
         <div className="form-control">
-          <label className="text-gray-700 mb-2" htmlFor="isTent">
+          <label className="text-gray-700" htmlFor="isTent">
             Is Tent
           </label>
           <select
@@ -178,7 +178,7 @@ export default function PostForm({ post, setPost, setFormStatus, handleSubmit }:
           </select>
         </div>
         <div className="form-control">
-          <label className="text-gray-700 mb-2" htmlFor="isCaravan">
+          <label className="text-gray-700" htmlFor="isCaravan">
             Is Caravan
           </label>
           <select
@@ -192,7 +192,7 @@ export default function PostForm({ post, setPost, setFormStatus, handleSubmit }:
           </select>
         </div>
         <div className="form-control">
-          <label className="text-gray-700 mb-2" htmlFor="isBed">
+          <label className="text-gray-700" htmlFor="isBed">
             Is Bed
           </label>
           <select
@@ -206,7 +206,7 @@ export default function PostForm({ post, setPost, setFormStatus, handleSubmit }:
           </select>
         </div>
         <div className="form-control">
-          <label className="text-gray-700 mb-2" htmlFor="text">
+          <label className="text-gray-700" htmlFor="text">
             Description
           </label>
           <textarea
@@ -217,7 +217,7 @@ export default function PostForm({ post, setPost, setFormStatus, handleSubmit }:
           />
         </div>
         <div className="form-control">
-          <label className="text-gray-700 mb-2" htmlFor="imageUrl">
+          <label className="text-gray-700" htmlFor="imageUrl">
             Image URL
           </label>
           <input
@@ -228,7 +228,7 @@ export default function PostForm({ post, setPost, setFormStatus, handleSubmit }:
           />
         </div>
         <div className="form-control">
-          <label className="text-gray-700 mb-2" htmlFor="userName">
+          <label className="text-gray-700" htmlFor="userName">
             User Name
           </label>
           <input
@@ -239,7 +239,7 @@ export default function PostForm({ post, setPost, setFormStatus, handleSubmit }:
           />
         </div>
         <div className="text-center flex flex-col gap-5 sm:flex-row mt-8">
-          <button type="submit" className="btn btn-primary-fill">
+          <button type="submit" className="btn btn-primary">
             Save Changes
           </button>
           <button

@@ -79,9 +79,7 @@ export default function CreateReview({
       <h2 className="text-2xl font-semibold mb-4">Create Review</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-control">
-          <label className="text-gray-700 mb-2" htmlFor="title">
-            Review Title
-          </label>
+          <label htmlFor="title">Review Title</label>
           <input
             type="text"
             id="title"
@@ -91,20 +89,18 @@ export default function CreateReview({
           />
         </div>
         <div className="form-control">
-          <label className="text-gray-700 mb-2" htmlFor="text">
+          <label className="text-gray-700" htmlFor="text">
             Review Text
           </label>
           <textarea
             id="text"
-            rows={4}
-            cols={50}
             value={review.text}
             onChange={(e) => setReview({ ...review, text: e.target.value })}
             placeholder="Write your review here..."
           />
         </div>
         <div className="form-control">
-          <label className="text-gray-700 mb-2" htmlFor="rating">
+          <label className="text-gray-700" htmlFor="rating">
             Review Rating
           </label>
           <input
@@ -119,7 +115,7 @@ export default function CreateReview({
           />
         </div>
         <div className="form-control">
-          <label className="text-gray-700 mb-2" htmlFor="userName">
+          <label className="text-gray-700" htmlFor="userName">
             User Name
           </label>
           <input
@@ -130,9 +126,20 @@ export default function CreateReview({
             placeholder="Write your review here..."
           />
         </div>
-        <button type="submit" className="btn btn-primary mt-4">
-          Save Review
-        </button>
+        <div className="text-center flex flex-col gap-5 sm:flex-row mt-8">
+          <button type="submit" className="btn btn-primary">
+            Save Review
+          </button>
+          <button
+            type="button"
+            className="btn btn-secondary sm:ml-5"
+            onClick={() => {
+              setReviewStatus(false);
+            }}
+          >
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );
