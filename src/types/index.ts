@@ -59,3 +59,15 @@ export type CreateReviewProps = {
   setReviewStatus: (status: boolean) => void;
   fetchReviews: () => void;
 };
+
+export type FilterbarProps = {
+  posts: Post[];
+  fetchPosts: (filters?: PostFilters) => Promise<void>;
+};
+
+export type PostFilters = {
+  location?: string;
+  isTent?: boolean;
+  isCaravan?: boolean;
+  isBed?: boolean;
+};

@@ -118,30 +118,46 @@ export default function PostDetailsCard({ postId }: PostDetailsCardProps) {
                 <p className="text-gray-600">Max Nights: {post.maxNumberOfNights}</p>
                 <p className="text-gray-600">Max Guests: {post.maxNumberOfPeople}</p>
                 <div className="flex flex-wrap gap-2">
-                  <p className="text-gray-600">
-                    {post.hasFacilities && <ToiletPaperIcon size={24} weight="duotone" />}
-                  </p>
-                  <p className="text-gray-600">
-                    {post.hasWifi && <WifiHighIcon size={24} weight="light" />}
-                  </p>
-                  <p className="text-gray-600">
-                    {post.hasKitchen && <CookingPotIcon size={24} weight="duotone" />}
-                  </p>
-                  <p className="text-gray-600">
-                    {post.hasWashingMachine && <WashingMachineIcon size={24} weight="duotone" />}
-                  </p>
-                  <p className="text-gray-600">
-                    {post.hasShower && <BathtubIcon size={24} weight="duotone" />}
-                  </p>
-                  <p className="text-gray-600">
-                    {post.isTent && <TentIcon size={24} weight="duotone" />}
-                  </p>
-                  <p className="text-gray-600">
-                    {post.isCaravan && <VanIcon size={24} weight="duotone" />}
-                  </p>
-                  <p className="text-gray-600">
-                    {post.isBed && <BedIcon size={24} weight="duotone" />}
-                  </p>
+                  {post.hasFacilities && (
+                    <p className="text-gray-600">
+                      <ToiletPaperIcon size={24} weight="duotone" />
+                    </p>
+                  )}
+                  {post.hasWifi && (
+                    <p className="text-gray-600">
+                      <WifiHighIcon size={24} weight="light" />
+                    </p>
+                  )}
+                  {post.hasKitchen && (
+                    <p className="text-gray-600">
+                      <CookingPotIcon size={24} weight="duotone" />
+                    </p>
+                  )}
+                  {post.hasWashingMachine && (
+                    <p className="text-gray-600">
+                      <WashingMachineIcon size={24} weight="duotone" />
+                    </p>
+                  )}
+                  {post.hasShower && (
+                    <p className="text-gray-600">
+                      <BathtubIcon size={24} weight="duotone" />
+                    </p>
+                  )}
+                  {post.isTent && (
+                    <p className="text-gray-600">
+                      <TentIcon size={24} weight="duotone" />
+                    </p>
+                  )}
+                  {post.isCaravan && (
+                    <p className="text-gray-600">
+                      <VanIcon size={24} weight="duotone" />
+                    </p>
+                  )}
+                  {post.isBed && (
+                    <p className="text-gray-600">
+                      <BedIcon size={24} weight="duotone" />
+                    </p>
+                  )}
                 </div>
                 <p className="text-gray-600">
                   Rating: {post.rating} / 5 ({post.ratingCount} reviews)

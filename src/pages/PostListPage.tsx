@@ -1,24 +1,27 @@
 import { useEffect, useState } from 'react';
-import type { Post } from '../types/index'; // Adjust the import path as necessary
+import type { Post, PostFilters } from '../types/index'; // Adjust the import path as necessary
 import axios from 'axios';
 import {
   ToiletPaperIcon,
   WifiHighIcon,
-  WifiSlashIcon,
   CookingPotIcon,
   WashingMachineIcon,
   BathtubIcon,
+  TentIcon,
+  VanIcon,
+  BedIcon,
 } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
 import CreatePostCard from '../components/CreatePostCard';
+import Filterbar from '../components/Filterbar';
 
 export default function PostListPage() {
   const [posts, setPosts] = useState<Post[] | null>(null);
   const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
-  const fetchPosts = async () => {
+  const fetchPosts = async (filters?: PostFilters) => {
     try {
-      const response = await axios.get<Post[]>(`${API_URL}/api/posts`);
+      const response = await axios.get<Post[]>(`${API_URL}/api/posts`, { params: filters });
       setPosts(response.data);
     } catch (error) {
       console.error('Error fetching posts:', error);
@@ -38,6 +41,7 @@ export default function PostListPage() {
       <div>
         <CreatePostCard fetchPosts={fetchPosts} />
       </div>
+      <div>{posts && <Filterbar posts={posts} fetchPosts={fetchPosts} />}</div>
       {posts ? (
         posts
           .map((post) => (
@@ -65,27 +69,46 @@ export default function PostListPage() {
                     )}
                     <p className="text-gray-500">Max Nights: {post.maxNumberOfNights}</p>
                     <div className="flex gap-2">
-                      <p className="text-gray-500">
-                        {post.hasFacilities && <ToiletPaperIcon size={24} weight="duotone" />}
-                      </p>
-                      <p className="text-gray-500">
-                        {post.hasWifi ? (
+                      {post.hasFacilities && (
+                        <p className="text-gray-600">
+                          <ToiletPaperIcon size={24} weight="duotone" />
+                        </p>
+                      )}
+                      {post.hasWifi && (
+                        <p className="text-gray-600">
                           <WifiHighIcon size={24} weight="light" />
-                        ) : (
-                          <WifiSlashIcon size={24} weight="light" />
-                        )}
-                      </p>
-                      <p className="text-gray-500">
-                        {post.hasKitchen && <CookingPotIcon size={24} weight="duotone" />}
-                      </p>
-                      <p className="text-gray-500">
-                        {post.hasWashingMachine && (
+                        </p>
+                      )}
+                      {post.hasKitchen && (
+                        <p className="text-gray-600">
+                          <CookingPotIcon size={24} weight="duotone" />
+                        </p>
+                      )}
+                      {post.hasWashingMachine && (
+                        <p className="text-gray-600">
                           <WashingMachineIcon size={24} weight="duotone" />
-                        )}
-                      </p>
-                      <p className="text-gray-500">
-                        {post.hasShower && <BathtubIcon size={24} weight="duotone" />}
-                      </p>
+                        </p>
+                      )}
+                      {post.hasShower && (
+                        <p className="text-gray-600">
+                          <BathtubIcon size={24} weight="duotone" />
+                        </p>
+                      )}
+                      {post.isTent && (
+                        <p className="text-gray-600">
+                          <TentIcon size={24} weight="duotone" />
+                        </p>
+                      )}
+                      {post.isCaravan && (
+                        <p className="text-gray-600">
+                          <VanIcon size={24} weight="duotone" />
+                        </p>
+                      )}
+                      {post.isBed && (
+                        <p className="text-gray-600">
+                          <BedIcon size={24} weight="duotone" />
+                        </p>
+                      )}
                     </div>
                     <p className="text-gray-500">
                       Rating: {post.rating} / 5 ({post.ratingCount} reviews)
