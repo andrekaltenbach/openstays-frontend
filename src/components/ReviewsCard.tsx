@@ -6,7 +6,7 @@ import CreateReview from './CreateReview';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
-export default function ReviewsCard({ post }: ReviewsCardProps) {
+export default function ReviewsCard({ post, fetchPost }: ReviewsCardProps) {
   const [reviewStatus, setReviewStatus] = useState<boolean>(false);
   const [reviews, setReviews] = useState<Review[] | null>(null);
 
@@ -51,6 +51,7 @@ export default function ReviewsCard({ post }: ReviewsCardProps) {
             postId={post.id}
             setReviewStatus={setReviewStatus}
             fetchReviews={fetchReviews}
+            fetchPost={fetchPost}
           />
         </div>
       )}

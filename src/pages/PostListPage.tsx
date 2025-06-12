@@ -111,7 +111,8 @@ export default function PostListPage() {
                       )}
                     </div>
                     <p className="text-gray-500">
-                      Rating: {post.rating} / 5 ({post.ratingCount} reviews)
+                      Rating: {post.rating.toFixed(1)} / 5 ({post.ratingCount}{' '}
+                      {post.ratingCount === 1 ? 'review' : 'reviews'})
                     </p>
                   </div>
                 </div>

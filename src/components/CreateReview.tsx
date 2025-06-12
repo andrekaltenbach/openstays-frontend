@@ -4,7 +4,12 @@ import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
-export default function CreateReview({ postId, setReviewStatus, fetchReviews }: CreateReviewProps) {
+export default function CreateReview({
+  postId,
+  setReviewStatus,
+  fetchReviews,
+  fetchPost,
+}: CreateReviewProps) {
   const [review, setReview] = useState({
     title: '',
     text: '',
@@ -13,6 +18,8 @@ export default function CreateReview({ postId, setReviewStatus, fetchReviews }: 
     postId: postId,
   });
 
+  // const [post, setPost] = useState<Post | null>(null);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -20,7 +27,10 @@ export default function CreateReview({ postId, setReviewStatus, fetchReviews }: 
       console.error('Please fill in all fields correctly.');
       return;
     }
-
+    const reviewRating: number = review.rating;
+    let avgRating: number = 0;
+    let newRatingCount: number = 0;
+    let post;
     try {
       const response = await axios.post(`${API_URL}/api/posts/${postId}/reviews`, review);
       console.log('Review created successfully:', response.data);
@@ -35,6 +45,34 @@ export default function CreateReview({ postId, setReviewStatus, fetchReviews }: 
       });
     } catch (error) {
       console.error('Error creating review:', error);
+    }
+    try {
+      const response = await axios.get(`${API_URL}/api/posts/${postId}`);
+      post = response.data;
+
+      if (!post) return;
+
+      console.log(response.data);
+
+      console.log('rating', post.rating);
+      avgRating = post.rating ? (reviewRating + post.rating) / 2 : reviewRating;
+      newRatingCount = post.ratingCount ? post.ratingCount + 1 : 1;
+      console.log('avgRating', avgRating);
+      console.log('newRatingCount', newRatingCount);
+    } catch (error) {
+      console.log('Error getting post for updating rating', error);
+    }
+    try {
+      const updatedPost = {
+        ...post,
+        rating: avgRating,
+        ratingCount: newRatingCount,
+      };
+      const response = await axios.put(`${API_URL}/api/posts/${postId}`, updatedPost);
+      console.log(response.data);
+      fetchPost();
+    } catch (error) {
+      console.log('error updating post rating and rating count');
     }
   };
 

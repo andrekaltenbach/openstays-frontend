@@ -98,7 +98,7 @@ export default function PostDetailsCard({ postId }: PostDetailsCardProps) {
               <img
                 src={post.imageUrl ? post.imageUrl : '../public/image-na.jpg'}
                 alt={post.title}
-                className="w-full h-74 object-cover mb-2 bg-amber-300"
+                className="w-full h-74 object-cover mb-2"
               />
               <div className="flex flex-col gap-2">
                 <h2 className="text-xl font-semibold">{post.title}</h2>
@@ -160,7 +160,8 @@ export default function PostDetailsCard({ postId }: PostDetailsCardProps) {
                   )}
                 </div>
                 <p className="text-gray-600">
-                  Rating: {post.rating} / 5 ({post.ratingCount} reviews)
+                  Rating: {post.rating.toFixed(1)} / 5 ({post.ratingCount}{' '}
+                  {post.ratingCount === 1 ? 'review' : 'reviews'})
                 </p>
               </div>
             </div>
@@ -197,27 +198,7 @@ export default function PostDetailsCard({ postId }: PostDetailsCardProps) {
               </div>
             </div>
             <div className="mt-8">
-              <ReviewsCard post={post} />
-              {/* <div className="flex justify-between items-center">
-                <h2 className="text-2xl font-semibold my-4">Reviews</h2>
-                <button onClick={() => setReviewStatus(true)}>
-                  <PlusIcon size={32} className="cursor-pointer" />
-                </button>
-              </div>
-              {post && post.reviews && post.reviews.length > 0 ? (
-                post.reviews.map((review) => (
-                  <div key={review.id} className="card mx-auto p-4 mb-4">
-                    <p className="text-gray-600">{review.text}</p>
-                    <p className="text-gray-500">Rating: {review.rating} / 5</p>
-                    <p className="mt-2 text-sm text-gray-400">
-                      Review by {review.userName} on{' '}
-                      {new Date(review.createdAt).toLocaleDateString()}
-                    </p>
-                  </div>
-                ))
-              ) : (
-                <p className="text-gray-500">No reviews available.</p>
-              )} */}
+              <ReviewsCard post={post} fetchPost={fetchPost} />
             </div>
           </div>
         </>

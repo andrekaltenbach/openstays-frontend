@@ -52,12 +52,14 @@ export type PostProps = {
 
 export type ReviewsCardProps = {
   post: Post;
+  fetchPost: () => void;
 };
 
 export type CreateReviewProps = {
   postId: string;
   setReviewStatus: (status: boolean) => void;
   fetchReviews: () => void;
+  fetchPost: () => void;
 };
 
 export type FilterbarProps = {
