@@ -18,8 +18,6 @@ export default function CreateReview({
     postId: postId,
   });
 
-  // const [post, setPost] = useState<Post | null>(null);
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 

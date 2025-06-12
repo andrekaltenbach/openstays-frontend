@@ -2,7 +2,7 @@ import axios from 'axios';
 import type { Post, PostDetailsCardProps, Review } from '../types';
 import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import EditPost from './EditPost'; // Adjust the import path as necessary
+import EditPost from './EditPost';
 import {
   ToiletPaperIcon,
   WifiHighIcon,
@@ -17,7 +17,7 @@ import {
 } from '@phosphor-icons/react';
 import ReviewsCard from './ReviewsCard';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'; // Adjust the server URL as necessary
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 export default function PostDetailsCard({ postId }: PostDetailsCardProps) {
   const [post, setPost] = useState<Post | null>(null);

@@ -4,7 +4,6 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col justify-center md:flex-row gap-10 max-w-200 mx-auto h-full mt-5">
       <div className="mx-auto">
-        {/* <div className="border-t-4 border-b-4 border-teal-600 py-4"> */}
         <div className="card text-center">
           <h1 className=" mb-2">About OpenStays</h1>
           <p>

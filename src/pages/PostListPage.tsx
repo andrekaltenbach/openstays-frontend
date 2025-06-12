@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import type { Post, PostFilters } from '../types/index'; // Adjust the import path as necessary
+import type { Post, PostFilters } from '../types/index';
 import axios from 'axios';
 import {
   ToiletPaperIcon,
