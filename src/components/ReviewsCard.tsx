@@ -31,7 +31,7 @@ export default function ReviewsCard({ post, fetchPost }: ReviewsCardProps) {
   }, [post]);
 
   return (
-    <div className="bg-gray-100 mx-auto p-4">
+    <div className="bg-gray-50 mx-auto p-4 rounded-b-2xl">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-semibold my-4">Reviews</h2>
         <button>
@@ -45,15 +45,12 @@ export default function ReviewsCard({ post, fetchPost }: ReviewsCardProps) {
         </button>
       </div>
       {reviewStatus && (
-        <div className="bg-white p-4 rounded shadow-md mb-4">
-          <h3 className="text-xl font-semibold mb-2">Add a Review</h3>
-          <CreateReview
-            postId={post.id}
-            setReviewStatus={setReviewStatus}
-            fetchReviews={fetchReviews}
-            fetchPost={fetchPost}
-          />
-        </div>
+        <CreateReview
+          postId={post.id}
+          setReviewStatus={setReviewStatus}
+          fetchReviews={fetchReviews}
+          fetchPost={fetchPost}
+        />
       )}
       {reviews ? (
         reviews.map((review) => (

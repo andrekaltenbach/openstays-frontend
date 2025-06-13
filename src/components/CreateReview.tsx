@@ -100,7 +100,7 @@ export default function CreateReview({
             id="text"
             value={review.text}
             onChange={(e) => setReview({ ...review, text: e.target.value })}
-            placeholder="Write your review here..."
+            placeholder="Write your title here..."
           />
         </div>
         <div className="form-control">
@@ -115,7 +115,7 @@ export default function CreateReview({
             id="rating"
             value={review.rating}
             onChange={(e) => setReview({ ...review, rating: Number(e.target.value) })}
-            placeholder="Write your review here..."
+            placeholder="Write your text here..."
           />
         </div>
         <div className="form-control">
@@ -127,16 +127,16 @@ export default function CreateReview({
             id="userName"
             value={review.userName}
             onChange={(e) => setReview({ ...review, userName: e.target.value })}
-            placeholder="Write your review here..."
+            placeholder="Write your name here..."
           />
         </div>
-        <div className="text-center flex flex-col gap-5 sm:flex-row mt-8">
+        <div className="text-center flex flex-col gap-5 sm:flex-row justify-between mt-8">
           <button type="submit" className="btn btn-primary">
             Save Review
           </button>
           <button
             type="button"
-            className="btn btn-secondary sm:ml-5"
+            className="font-bold text-gray-500 hover:text-gray-800 cursor-pointer sm:ml-5"
             onClick={() => {
               setReviewStatus(false);
             }}

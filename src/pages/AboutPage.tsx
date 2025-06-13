@@ -4,7 +4,7 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col justify-center md:flex-row gap-10 max-w-200 mx-auto h-full mt-5">
       <div className="mx-auto">
-        <div className="card text-center">
+        <div className="card p-4 text-center">
           <h1 className=" mb-2">About OpenStays</h1>
           <p>
             OpenStays is a community-driven platform that connects travelers with generous hosts
@@ -36,7 +36,7 @@ export default function AboutPage() {
             </span>
           </p>
         </div>
-        <div className="card">
+        <div className="card pb-4">
           <div className="flex gap-8 my-10 justify-center items-center">
             <img
               src="/andre.jpg"

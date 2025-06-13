@@ -99,14 +99,14 @@ export default function PostDetailsCard({ postId }: PostDetailsCardProps) {
         />
       ) : (
         <>
-          <div className="card mx-auto p-4">
+          <div className="card mx-auto">
             <div className="flex flex-col gap-6">
               <img
                 src={post.imageUrl ? post.imageUrl : '../public/image-na.jpg'}
                 alt={post.title}
-                className="w-full h-74 object-cover mb-2"
+                className="w-full h-74 object-cover mb-2 rounded-t-lg"
               />
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2 px-4">
                 <h2 className="text-xl font-semibold">{post.title}</h2>
                 <p className="text-gray-600 pb-3">{post.location}</p>
                 <p className="pb-3">{post.text}</p>
@@ -171,7 +171,7 @@ export default function PostDetailsCard({ postId }: PostDetailsCardProps) {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col -space-y-2">
+            <div className="flex flex-col -space-y-2 px-4">
               <p className="mt-2 text-sm text-gray-400">
                 Posted by {post.userName} on {new Date(post.createdAt).toLocaleDateString()}
               </p>
@@ -181,7 +181,7 @@ export default function PostDetailsCard({ postId }: PostDetailsCardProps) {
                 </p>
               )}
             </div>
-            <div className="flex justify-between items-center mt-4">
+            <div className="flex justify-between items-center mt-4 px-4">
               <Link to={'/'}>
                 <button className="btn btn-primary">Back</button>
               </Link>
