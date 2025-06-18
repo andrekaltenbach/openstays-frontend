@@ -42,90 +42,95 @@ export default function PostListPage() {
         <CreatePostCard fetchPosts={fetchPosts} />
       </div>
       <div>{posts && <Filterbar posts={posts} fetchPosts={fetchPosts} />}</div>
-      {posts ? (
-        posts
-          .map((post) => (
-            <Link to={`/posts/${post.id}`} key={post.id}>
-              <div key={post.id} className="card">
-                <div className="flex flex-col sm:flex-row gap-6">
-                  <img
-                    src={post.imageUrl ? post.imageUrl : '/image-na.jpg'}
-                    alt={post.title}
-                    className="w-full sm:w-48 md:w-80 h-48 object-cover mb-2"
-                  />
-                  <div className="flex flex-col gap-2">
-                    <h2 className="text-xl font-semibold">{post.title}</h2>
-                    <p className="text-gray-600 pb-3">{post.location}</p>
-                    {post.permanentOffer ? (
-                      <p className="text-green-500">Permanent Offer</p>
-                    ) : (
-                      post.fromDate &&
-                      post.untilDate && (
-                        <p className="text-gray-500">
-                          Offer valid <br /> from: {new Date(post.fromDate).toLocaleDateString()}{' '}
-                          <br /> until: {new Date(post.untilDate).toLocaleDateString()}
-                        </p>
-                      )
-                    )}
-                    <p className="text-gray-500">Max Nights: {post.maxNumberOfNights}</p>
-                    <div className="flex gap-2">
-                      {post.hasFacilities && (
-                        <p className="text-gray-600">
-                          <ToiletPaperIcon size={24} weight="duotone" />
-                        </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7 mb-5 md:mb-10">
+        {posts ? (
+          posts
+            .map((post) => (
+              <Link to={`/posts/${post.id}`} key={post.id}>
+                <div key={post.id} className="card">
+                  <div className="flex flex-col gap-6">
+                    <img
+                      src={post.imageUrl ? post.imageUrl : '/image-na.jpg'}
+                      alt={post.title}
+                      className="w-full h-48 object-cover rounded-t-lg mb-2"
+                    />
+                    <div className="flex flex-col gap-2 p-2">
+                      <h2 className="text-xl font-semibold">{post.title}</h2>
+                      <p className="text-gray-600 pb-3">{post.location}</p>
+                      {post.permanentOffer ? (
+                        <>
+                          <p className="text-green-500">Permanent Offer</p>
+                          <div className="h-10" />
+                        </>
+                      ) : (
+                        post.fromDate &&
+                        post.untilDate && (
+                          <p className="text-gray-500">
+                            Offer valid <br /> from: {new Date(post.fromDate).toLocaleDateString()}{' '}
+                            <br /> until: {new Date(post.untilDate).toLocaleDateString()}
+                          </p>
+                        )
                       )}
-                      {post.hasWifi && (
-                        <p className="text-gray-600">
-                          <WifiHighIcon size={24} weight="light" />
-                        </p>
-                      )}
-                      {post.hasKitchen && (
-                        <p className="text-gray-600">
-                          <CookingPotIcon size={24} weight="duotone" />
-                        </p>
-                      )}
-                      {post.hasWashingMachine && (
-                        <p className="text-gray-600">
-                          <WashingMachineIcon size={24} weight="duotone" />
-                        </p>
-                      )}
-                      {post.hasShower && (
-                        <p className="text-gray-600">
-                          <BathtubIcon size={24} weight="duotone" />
-                        </p>
-                      )}
-                      {post.isTent && (
-                        <p className="text-gray-600">
-                          <TentIcon size={24} weight="duotone" />
-                        </p>
-                      )}
-                      {post.isCaravan && (
-                        <p className="text-gray-600">
-                          <VanIcon size={24} weight="duotone" />
-                        </p>
-                      )}
-                      {post.isBed && (
-                        <p className="text-gray-600">
-                          <BedIcon size={24} weight="duotone" />
-                        </p>
-                      )}
+                      <p className="text-gray-500">Max Nights: {post.maxNumberOfNights}</p>
+                      <div className="flex gap-2">
+                        {post.hasFacilities && (
+                          <p className="text-gray-600">
+                            <ToiletPaperIcon size={24} weight="duotone" />
+                          </p>
+                        )}
+                        {post.hasWifi && (
+                          <p className="text-gray-600">
+                            <WifiHighIcon size={24} weight="light" />
+                          </p>
+                        )}
+                        {post.hasKitchen && (
+                          <p className="text-gray-600">
+                            <CookingPotIcon size={24} weight="duotone" />
+                          </p>
+                        )}
+                        {post.hasWashingMachine && (
+                          <p className="text-gray-600">
+                            <WashingMachineIcon size={24} weight="duotone" />
+                          </p>
+                        )}
+                        {post.hasShower && (
+                          <p className="text-gray-600">
+                            <BathtubIcon size={24} weight="duotone" />
+                          </p>
+                        )}
+                        {post.isTent && (
+                          <p className="text-gray-600">
+                            <TentIcon size={24} weight="duotone" />
+                          </p>
+                        )}
+                        {post.isCaravan && (
+                          <p className="text-gray-600">
+                            <VanIcon size={24} weight="duotone" />
+                          </p>
+                        )}
+                        {post.isBed && (
+                          <p className="text-gray-600">
+                            <BedIcon size={24} weight="duotone" />
+                          </p>
+                        )}
+                      </div>
+                      <p className="text-gray-500">
+                        Rating: {post.rating.toFixed(1)} / 5 ({post.ratingCount}{' '}
+                        {post.ratingCount === 1 ? 'review' : 'reviews'})
+                      </p>
                     </div>
-                    <p className="text-gray-500">
-                      Rating: {post.rating.toFixed(1)} / 5 ({post.ratingCount}{' '}
-                      {post.ratingCount === 1 ? 'review' : 'reviews'})
-                    </p>
                   </div>
+                  <p className="p-2 text-sm text-gray-400">
+                    Posted by {post.userName} on {new Date(post.createdAt).toLocaleDateString()}
+                  </p>
                 </div>
-                <p className="mt-2 text-sm text-gray-400">
-                  Posted by {post.userName} on {new Date(post.createdAt).toLocaleDateString()}
-                </p>
-              </div>
-            </Link>
-          ))
-          .reverse()
-      ) : (
-        <p className="text-gray-500">Loading posts...</p>
-      )}
+              </Link>
+            ))
+            .reverse()
+        ) : (
+          <p className="text-gray-500">Loading posts...</p>
+        )}
+      </div>
     </div>
   );
 }

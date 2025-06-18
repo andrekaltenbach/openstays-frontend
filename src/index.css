@@ -87,7 +87,7 @@ form textarea {
 
 /* card Style*/
 .card {
-  @apply rounded-lg my-10 mx-auto flex flex-col gap-2 bg-gray-50;
+  @apply rounded-lg flex flex-col gap-2 bg-gray-50;
 }
 .review-card {
   @apply rounded-lg p-4 my-5 mx-auto flex flex-col gap-2 bg-gray-50;
